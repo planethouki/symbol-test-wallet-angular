@@ -6,17 +6,57 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
 
+// Import MSAL and MSAL browser libraries.
+import { MsalGuard, MsalInterceptor, MsalModule, MsalRedirectComponent } from '@azure/msal-angular';
+import { InteractionType, PublicClientApplication } from '@azure/msal-browser';
+
+// Import the Azure AD B2C configuration
+import { msalConfig, protectedResources } from './auth-config';
+
+// Import the Angular HTTP interceptor.
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ProfileComponent } from './profile/profile.component';
+import { HomeComponent } from './home/home.component';
+import { WebapiComponent } from './webapi/webapi.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeComponent,
+    ProfileComponent,
+    WebapiComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule,
+    MsalModule.forRoot(new PublicClientApplication(msalConfig),
+      {
+        // The routing guard configuration.
+        interactionType: InteractionType.Redirect,
+        authRequest: {
+          scopes: protectedResources.apiTodoList.scopes.read
+        }
+      },
+      {
+        // MSAL interceptor configuration.
+        // The protected resource mapping maps your web API with the corresponding app scopes. If your code needs to call another web API, add the URI mapping here.
+        interactionType: InteractionType.Redirect,
+        protectedResourceMap: new Map([
+          [protectedResources.apiTodoList.endpoint, protectedResources.apiTodoList.scopes.write]
+        ])
+      })
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MsalInterceptor,
+      multi: true
+    },
+    MsalGuard
+  ],
+  bootstrap: [AppComponent, MsalRedirectComponent]
 })
 export class AppModule { }

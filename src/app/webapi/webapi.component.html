@@ -1,0 +1,10 @@
+<h1>The web API returns:</h1>
+
+<div class="footer-text">
+  Web API: {{todoListEndpoint}}
+</div>
+
+<div *ngFor="let todo of todoList">
+  <h2>{{todo.title}}</h2>
+  <p>{{todo.completed}}</p>
+</div>

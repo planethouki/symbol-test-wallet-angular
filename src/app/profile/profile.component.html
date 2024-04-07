@@ -1,0 +1,17 @@
+<h1>ID token claims:</h1>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">id</th>
+    <th scope="col">claim</th>
+    <th scope="col">value</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of dataSource">
+      <td>{{ data.id }}</td>
+      <td>{{ data.claim }}</td>
+      <td>{{ data.value }}</td>
+    </tr>
+  </tbody>
+</table>
