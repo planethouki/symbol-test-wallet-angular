@@ -19,6 +19,9 @@ jobs:
         with:
           submodules: true
           lfs: false
+      - name: Create environment file
+        run: |
+          echo API_URL=${{ secrets.environment }} >> src/app/environments/environment.ts
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
