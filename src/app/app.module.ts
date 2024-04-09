@@ -18,6 +18,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { WebapiComponent } from './webapi/webapi.component';
+import { SendComponent } from './send/send.component';
+import { ReceiveComponent } from './receive/receive.component';
+import { HistoryComponent } from './history/history.component';
+import { ConfigComponent } from './config/config.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import { WebapiComponent } from './webapi/webapi.component';
     NavbarComponent,
     HomeComponent,
     ProfileComponent,
-    WebapiComponent
+    WebapiComponent,
+    SendComponent,
+    ReceiveComponent,
+    HistoryComponent,
+    ConfigComponent
   ],
   imports: [
     BrowserModule,
