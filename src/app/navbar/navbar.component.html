@@ -1,25 +1,52 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="/">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      (click)="accordion.toggle('first')"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/profile">Profile</a>
+          <a class="nav-link" routerLink="/send">Send</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/webapi">WebAPI</a>
+          <a class="nav-link" routerLink="/receive">Receive</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
+          <a class="nav-link" routerLink="/history">History</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/config">Config</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
     </div>
   </div>
 </nav>
+
+<div ngbAccordion #accordion="ngbAccordion">
+  <div ngbAccordionItem="first">
+    <div ngbAccordionCollapse>
+      <div ngbAccordionBody>
+        <ng-template><a routerLink="/send">Send</a></ng-template>
+      </div>
+      <div ngbAccordionBody>
+        <ng-template><a routerLink="/receive">Receive</a></ng-template>
+      </div>
+      <div ngbAccordionBody>
+        <ng-template><a routerLink="/history">History</a></ng-template>
+      </div>
+      <div ngbAccordionBody>
+        <ng-template><a routerLink="/config">Config</a></ng-template>
+      </div>
+    </div>
+  </div>
+</div>
