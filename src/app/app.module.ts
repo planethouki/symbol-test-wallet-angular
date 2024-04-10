@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NavbarComponent } from './navbar/navbar.component';
 
 // Import MSAL and MSAL browser libraries.
 import { MsalGuard, MsalInterceptor, MsalModule, MsalRedirectComponent } from '@azure/msal-angular';
@@ -15,7 +14,10 @@ import { msalConfig, protectedResources } from './auth-config';
 
 // Import the Angular HTTP interceptor.
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+
 import { ProfileComponent } from './profile/profile.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { WebapiComponent } from './webapi/webapi.component';
 import { SendComponent } from './send/send.component';
