@@ -22,6 +22,7 @@ import { SendComponent } from './send/send.component';
 import { ReceiveComponent } from './receive/receive.component';
 import { HistoryComponent } from './history/history.component';
 import { ConfigComponent } from './config/config.component';
+import { LoginButtonComponent } from './components/login-button/login-button.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ConfigComponent } from './config/config.component';
     SendComponent,
     ReceiveComponent,
     HistoryComponent,
-    ConfigComponent
+    ConfigComponent,
+    LoginButtonComponent
   ],
   imports: [
     BrowserModule,
